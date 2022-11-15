@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="agencia.CadastroClienteController">
+   <children>
+      <TitledPane animated="false" layoutX="14.0" layoutY="33.0" prefHeight="457.0" prefWidth="672.0" text="Nova conta">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="229.0" layoutY="362.0" mnemonicParsing="false" text="Salvar" />
+                  <Button layoutX="339.0" layoutY="362.0" mnemonicParsing="false" text="Cancelar" />
+                  <Label layoutX="21.0" layoutY="100.0" text="Conta:" />
+                  <Label layoutX="25.0" layoutY="167.0" text="Saldo inicial:" />
+                  <RadioButton layoutX="123.0" layoutY="100.0" mnemonicParsing="false" text="Corrente" />
+                  <RadioButton layoutX="221.0" layoutY="100.0" mnemonicParsing="false" text="Poupança" />
+                  <TextField layoutX="146.0" layoutY="167.0" />
+                  <Label layoutX="18.0" layoutY="28.0" text="Cliente:" />
+                  <ChoiceBox layoutX="145.0" layoutY="24.0" prefWidth="150.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+   </children>
+</AnchorPane>
