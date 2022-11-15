@@ -12,7 +12,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Arquivo"> 
             <items> 
-              <MenuItem mnemonicParsing="false" text="Sair"/>
+              <MenuItem mnemonicParsing="false" text="Sair" onAction="#sairSistema" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Cadastro">
