@@ -18,7 +18,7 @@
           <Menu mnemonicParsing="false" text="Cadastro">
             <items>
               <MenuItem mnemonicParsing="false" text="Cliente" />
-                  <MenuItem mnemonicParsing="false" text="+ Novo Cliente" />
+                  <MenuItem mnemonicParsing="false" text="+ Novo Cliente"  onAction="#showTelaCadastraCliente" />
                   <MenuItem mnemonicParsing="false" text="- Deletar Cliente" />
                   <MenuItem mnemonicParsing="false" text="Conta" />
                   <MenuItem mnemonicParsing="false" text="+ Nova Conta" />
