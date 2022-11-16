@@ -6,46 +6,48 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.MenuInicialController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
             <Menu mnemonicParsing="false" text="Arquivo">
               <items>
-                <MenuItem mnemonicParsing="false" text="Sair" />
+                <MenuItem id="menuSair" mnemonicParsing="false" onAction="#acaoMenu" text="Sair" />
               </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Cadastro">
             <items>
                   <Menu mnemonicParsing="false" text="Cliente">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Novo" />
-                        <MenuItem mnemonicParsing="false" text="Deletar" />
+                      <MenuItem id="menuNovoCliente" mnemonicParsing="false" onAction="#acaoMenu" text="Novo" />
+                        <MenuItem id="menuDeletarCliente" mnemonicParsing="false" onAction="#acaoMenu" text="Deletar" />
                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Conta">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Novo" />
-                        <MenuItem mnemonicParsing="false" text="Deletar" />
+                        <MenuItem id="menuNovoConta" mnemonicParsing="false" onAction="#acaoMenu" text="Novo" />
+                        <MenuItem id="menuDeletarConta" mnemonicParsing="false" onAction="#acaoMenu" text="Deletar" />
                      </items>
                   </Menu>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Operações">
             <items>
-              <MenuItem mnemonicParsing="false" text="Depósito" />
-                  <MenuItem mnemonicParsing="false" text="Saque" />
-                  <MenuItem mnemonicParsing="false" text="Transferência" />
+              <MenuItem id="menuDeposito" mnemonicParsing="false" onAction="#acaoMenu" text="Depósito" />
+                  <MenuItem id="menuSaque" mnemonicParsing="false" onAction="#acaoMenu" text="Saque" />
+                  <MenuItem id="menuTransferencia" mnemonicParsing="false" onAction="#acaoMenu" text="Transferência" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Relatório">
               <items>
-                <MenuItem mnemonicParsing="false" text="Um cliente" />
-                  <MenuItem mnemonicParsing="false" text="Todos os clientes" />
+                <MenuItem id="menuUmCliente" mnemonicParsing="false" onAction="#acaoMenu" text="Um cliente" />
+                  <MenuItem id="menuTodosOsClientes" mnemonicParsing="false" onAction="#acaoMenu" text="Todos os clientes" />
               </items>
             </Menu>
         </menus>
       </MenuBar>
    </top>
+   <center>
+      <TitledPane id="conteudo" fx:id="conteudo" collapsible="false" prefHeight="388.0" prefWidth="600.0" text="texto" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

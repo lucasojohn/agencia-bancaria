@@ -17,9 +17,11 @@ import javafx.stage.Stage;
  */
 public class Agencia extends Application {
     
+    private static Scene scene;
+    
     @Override
     public void start(Stage stage) throws Exception {
-        Scene scene = new Scene(carregaTela("MenuInicial"));
+        scene = new Scene(carregaTela("MenuInicial"));
         
         stage.setScene(scene);
         stage.show();
@@ -27,10 +29,13 @@ public class Agencia extends Application {
     
     public static Parent carregaTela(String nomeTela) throws IOException{
         
-        FXMLLoader carregar = 
-                new FXMLLoader(
+        FXMLLoader carregar = new FXMLLoader(
       Agencia.class.getResource("/agencia/view/"  + nomeTela + ".fxml"));
         return carregar.load();
+    }
+    
+    public static void mudaTela(String nomeTela) throws IOException{
+        scene.setRoot(carregaTela(nomeTela));
     }
 
     /**
