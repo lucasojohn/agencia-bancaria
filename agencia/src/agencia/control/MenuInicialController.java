@@ -36,6 +36,26 @@ public class MenuInicialController implements Initializable {
                 conteudo.setContent(Agencia.carregaTela("CadastroCliente"));
                 conteudo.setVisible(true);
                 break;
+            case "menuDeletarCliente":
+                conteudo.setText("Exclusão de Cliente");
+                conteudo.setContent(Agencia.carregaTela("DeletaCliente"));
+                conteudo.setVisible(true);
+                break;
+            case "menuNovoConta":
+                conteudo.setText("Cadastro de Conta");
+                conteudo.setContent(Agencia.carregaTela("CadastroConta"));
+                conteudo.setVisible(true);
+                break;
+            case "menuDeletarConta":
+                conteudo.setText("Exclusão de Conta");
+                conteudo.setContent(Agencia.carregaTela("DeletaConta"));
+                conteudo.setVisible(true);
+                break;
+            case "menuDeposito":
+                conteudo.setText("Deposito em Conta");
+                conteudo.setContent(Agencia.carregaTela("Deposito"));
+                conteudo.setVisible(true);
+                break;
             case "menuSair":
                 Stage stage = (Stage) conteudo.getScene().getWindow();
                 stage.close();
