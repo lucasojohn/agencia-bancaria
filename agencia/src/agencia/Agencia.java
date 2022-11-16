@@ -4,6 +4,7 @@
  */
 package agencia;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,12 +19,18 @@ public class Agencia extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("MenuInicial.fxml"));
-        
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(carregaTela("MenuInicial"));
         
         stage.setScene(scene);
         stage.show();
+    }
+    
+    public static Parent carregaTela(String nomeTela) throws IOException{
+        
+        FXMLLoader carregar = 
+                new FXMLLoader(
+      Agencia.class.getResource("/agencia/view/"  + nomeTela + ".fxml"));
+        return carregar.load();
     }
 
     /**
