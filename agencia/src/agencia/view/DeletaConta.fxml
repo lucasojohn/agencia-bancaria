@@ -8,13 +8,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.ContaController">
    <children>
-       <Button layoutX="229.0" layoutY="362.0" mnemonicParsing="false" text="Deletar" />
-        <Button layoutX="339.0" layoutY="362.0" mnemonicParsing="false" onAction="#fechar" text="Cancelar" />
+       <Button id="deletar" layoutX="229.0" layoutY="362.0" mnemonicParsing="false" text="Deletar" />
+        <Button id="cancelar" layoutX="339.0" layoutY="362.0" mnemonicParsing="false" onAction="#fechar" text="Cancelar" />
         <Label layoutX="25.0" layoutY="167.0" text="Saldo:" />
-        <TextField disable="true" layoutX="146.0" layoutY="167.0" />
+        <TextField id="saldo" disable="true" layoutX="146.0" layoutY="167.0" />
         <Label layoutX="18.0" layoutY="28.0" text="Cliente:" />
-        <ChoiceBox layoutX="145.0" layoutY="24.0" prefHeight="25.0" prefWidth="216.0" />
+        <ChoiceBox id="cliente" layoutX="145.0" layoutY="24.0" prefHeight="25.0" prefWidth="216.0" />
         <Label layoutX="21.0" layoutY="99.0" text="Conta:" />
-        <ChoiceBox disable="true" layoutX="145.0" layoutY="95.0" prefHeight="25.0" prefWidth="214.0" />
+        <ChoiceBox id="conta" disable="true" layoutX="145.0" layoutY="95.0" prefHeight="25.0" prefWidth="214.0" />
    </children>
 </AnchorPane>

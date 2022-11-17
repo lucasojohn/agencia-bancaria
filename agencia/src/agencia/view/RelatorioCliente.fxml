@@ -8,12 +8,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.ClienteController">
    <children>
-      <Button layoutX="381.0" layoutY="32.0" mnemonicParsing="false" onAction="#fechar" text="Cancelar" />
+      <Button id="cancelar" layoutX="381.0" layoutY="32.0" mnemonicParsing="false" onAction="#fechar" text="Cancelar" />
       <Label layoutX="36.0" layoutY="36.0" text="CPF:" />
       <Label layoutX="36.0" layoutY="98.0" text="Dados:" />
-      <TextField layoutX="36.0" layoutY="129.0" prefHeight="327.0" prefWidth="633.0" />
-      <TextField layoutX="76.0" layoutY="32.0" prefHeight="25.0" prefWidth="175.0" />
-      <Button layoutX="289.0" layoutY="32.0" mnemonicParsing="false" text="Buscar" />
+      <TextField id="dados" layoutX="36.0" layoutY="129.0" prefHeight="327.0" prefWidth="633.0" />
+      <TextField id="cpf" layoutX="76.0" layoutY="32.0" prefHeight="25.0" prefWidth="175.0" />
+      <Button id="buscar" layoutX="289.0" layoutY="32.0" mnemonicParsing="false" text="Buscar" />
       <Slider layoutX="648.0" layoutY="134.0" orientation="VERTICAL" prefHeight="318.0" prefWidth="14.0" />
    </children>
 </AnchorPane>
