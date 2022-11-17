@@ -56,6 +56,16 @@ public class MenuInicialController implements Initializable {
                 conteudo.setContent(Agencia.carregaTela("Deposito"));
                 conteudo.setVisible(true);
                 break;
+            case "menuSaque":
+                conteudo.setText("Saque");
+                conteudo.setContent(Agencia.carregaTela("Saque"));
+                conteudo.setVisible(true);
+                break;
+            case "menuTransferencia":
+                conteudo.setText("Tranferência");
+                conteudo.setContent(Agencia.carregaTela("Transferencia"));
+                conteudo.setVisible(true);
+                break;
             case "menuSair":
                 Stage stage = (Stage) conteudo.getScene().getWindow();
                 stage.close();

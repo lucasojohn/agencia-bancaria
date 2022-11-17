@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.CadastroClienteController">
+    <children>
+       <Button layoutX="222.0" layoutY="254.0" mnemonicParsing="false" text="Salvar" />
+       <Button layoutX="355.0" layoutY="254.0" mnemonicParsing="false" text="Cancelar" />
+       <TextField layoutX="132.0" layoutY="65.0" prefHeight="25.0" prefWidth="180.0" />
+       <Label layoutX="232.0" layoutY="336.0" text="Informe conta destino diferente da conta origem!" textFill="#ee0202" />
+      <Label layoutX="25.0" layoutY="69.0" text="Conta de origem:" />
+      <Label layoutX="25.0" layoutY="127.0" text="Conta de destino:" />
+      <TextField layoutX="132.0" layoutY="123.0" prefHeight="25.0" prefWidth="180.0" />
+      <TextField layoutX="132.0" layoutY="180.0" prefHeight="25.0" prefWidth="180.0" />
+      <Label layoutX="25.0" layoutY="184.0" text="Valor:" />
+    </children>
+</AnchorPane>
