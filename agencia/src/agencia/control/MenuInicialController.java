@@ -62,7 +62,7 @@ public class MenuInicialController implements Initializable {
                 conteudo.setVisible(true);
                 break;
             case "menuTransferencia":
-                conteudo.setText("Tranferência");
+                conteudo.setText("Transferência");
                 conteudo.setContent(Agencia.carregaTela("Transferencia"));
                 conteudo.setVisible(true);
                 break;

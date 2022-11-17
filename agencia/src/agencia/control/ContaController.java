@@ -11,7 +11,7 @@ import javafx.scene.control.Label;
  *
  * @author lucas
  */
-public class CadastroClienteController implements Initializable {
+public class ContaController implements Initializable {
     
     @FXML
     private Label label;
