@@ -9,7 +9,7 @@
 <AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.CadastroClienteController">
    <children>
         <Button layoutX="275.0" layoutY="19.0" mnemonicParsing="false" text="Buscar" />
-        <Button layoutX="339.0" layoutY="362.0" mnemonicParsing="false" text="Cancelar" />
+        <Button layoutX="339.0" layoutY="362.0" mnemonicParsing="false" onAction="#fechar" text="Cancelar" />
         <Label layoutX="18.0" layoutY="23.0" text="CPF:" />
         <Label layoutX="17.0" layoutY="116.0" text="Data de Nascimento:" />
         <Label layoutX="15.0" layoutY="159.0" text="Sexo:" />
@@ -21,7 +21,7 @@
         <RadioButton disable="true" layoutX="93.0" layoutY="240.0" mnemonicParsing="false" text="Corrente" />
         <RadioButton disable="true" layoutX="203.0" layoutY="240.0" mnemonicParsing="false" text="Poupança" />
         <TextField disable="true" editable="false" layoutX="78.0" layoutY="193.0" prefHeight="25.0" prefWidth="521.0" />
-        <TextField disable="true" editable="false" layoutX="66.0" layoutY="19.0" prefHeight="25.0" prefWidth="175.0" />
+        <TextField layoutX="66.0" layoutY="19.0" prefHeight="25.0" prefWidth="175.0" />
         <TextField disable="true" editable="false" layoutX="141.0" layoutY="112.0" />
         <TextField disable="true" editable="false" layoutX="104.0" layoutY="286.0" />
         <Button layoutX="205.0" layoutY="362.0" mnemonicParsing="false" text="Deletar" />
