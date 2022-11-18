@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.CadastroClienteController">
+<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.ClienteController">
    <children>
         <Button id="buscar" layoutX="275.0" layoutY="19.0" mnemonicParsing="false" text="Buscar" />
         <Button id="cancelar" layoutX="339.0" layoutY="362.0" mnemonicParsing="false" onAction="#fechar" text="Cancelar" />
