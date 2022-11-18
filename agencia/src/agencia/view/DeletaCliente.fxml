@@ -9,23 +9,23 @@
 <AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.ClienteController">
    <children>
         <Button id="buscar" layoutX="275.0" layoutY="19.0" mnemonicParsing="false" text="Buscar" />
-        <Button id="cancelar" layoutX="339.0" layoutY="362.0" mnemonicParsing="false" onAction="#fechar" text="Cancelar" />
+        <Button id="cancelar" fx:id="cancelar" layoutX="339.0" layoutY="362.0" mnemonicParsing="false" onAction="#fechar" text="Cancelar" />
         <Label layoutX="18.0" layoutY="23.0" text="CPF:" />
         <Label layoutX="17.0" layoutY="116.0" text="Data de Nascimento:" />
         <Label layoutX="15.0" layoutY="159.0" text="Sexo:" />
         <Label layoutX="14.0" layoutY="197.0" text="Endereço:" />
-        <RadioButton id="masculino" disable="true" layoutX="90.0" layoutY="159.0" mnemonicParsing="false" text="Masculino" />
-        <RadioButton id="feminino" disable="true" layoutX="205.0" layoutY="159.0" mnemonicParsing="false" text="Feminino" />
+        <RadioButton id="masculino" fx:id="masculino" disable="true" layoutX="90.0" layoutY="159.0" mnemonicParsing="false" text="Masculino" />
+        <RadioButton id="feminino" fx:id="feminino" disable="true" layoutX="205.0" layoutY="159.0" mnemonicParsing="false" text="Feminino" />
         <Label layoutX="15.0" layoutY="240.0" text="Conta:" />
         <Label layoutX="18.0" layoutY="290.0" text="Saldo atual:" />
-        <RadioButton id="contaCorrente" disable="true" layoutX="93.0" layoutY="240.0" mnemonicParsing="false" text="Corrente" />
-        <RadioButton id="contaPoupanca" disable="true" layoutX="203.0" layoutY="240.0" mnemonicParsing="false" text="Poupança" />
-        <TextField id="endereco" disable="true" editable="false" layoutX="78.0" layoutY="193.0" prefHeight="25.0" prefWidth="521.0" />
-        <TextField id="cpf" layoutX="66.0" layoutY="19.0" prefHeight="25.0" prefWidth="175.0" />
-        <TextField id="dataNasc" disable="true" editable="false" layoutX="141.0" layoutY="112.0" />
-        <TextField id="saldo" disable="true" editable="false" layoutX="104.0" layoutY="286.0" />
-        <Button id="deletar" layoutX="205.0" layoutY="362.0" mnemonicParsing="false" text="Deletar" />
-        <TextField id="nome" disable="true" editable="false" layoutX="64.0" layoutY="66.0" prefHeight="25.0" prefWidth="530.0" />
+        <RadioButton id="contaCorrente" fx:id="contaCorrente" disable="true" layoutX="93.0" layoutY="240.0" mnemonicParsing="false" text="Corrente" />
+        <RadioButton id="contaPoupanca" fx:id="contaPoupanca" disable="true" layoutX="203.0" layoutY="240.0" mnemonicParsing="false" text="Poupança" />
+        <TextField id="endereco" fx:id="endereco" disable="true" editable="false" layoutX="78.0" layoutY="193.0" prefHeight="25.0" prefWidth="521.0" />
+        <TextField id="cpf" fx:id="cpf" layoutX="66.0" layoutY="19.0" prefHeight="25.0" prefWidth="175.0" />
+        <TextField id="dataNasc" fx:id="dataNasc" disable="true" editable="false" layoutX="141.0" layoutY="112.0" />
+        <TextField id="saldo" fx:id="saldo" disable="true" editable="false" layoutX="104.0" layoutY="286.0" />
+        <Button id="deletar" fx:id="deletar" layoutX="205.0" layoutY="362.0" mnemonicParsing="false" text="Deletar" />
+        <TextField id="nome" fx:id="nome" disable="true" editable="false" layoutX="64.0" layoutY="66.0" prefHeight="25.0" prefWidth="530.0" />
         <Label layoutX="15.0" layoutY="70.0" text="Nome:" />
    </children>
 </AnchorPane>
