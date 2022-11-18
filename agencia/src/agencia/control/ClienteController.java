@@ -17,7 +17,6 @@ import javafx.scene.control.TextField;
 public class ClienteController implements Initializable {
     
     @FXML
-    private Label label;
     private TextField cpf;
     private TextField nome;
     private TextField dataNasc;
@@ -29,6 +28,9 @@ public class ClienteController implements Initializable {
     private TextField saldo;
     private Button deletar;
     private Button cancelar;
+    private Button buscar;
+    private TextField dados;
+    private Button sair;
     
     
     @FXML
