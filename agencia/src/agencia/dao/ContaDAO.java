@@ -9,82 +9,74 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import agencia.model.Conta;
+import agencia.Conta;
 import util.EntityManagerUtil;
 
 public class ContaDAO {
 
 	private EntityManager em;
 	
-	public void salva(Usuario usuario) {
-		
+	public void salva(Conta conta) {
 		this.em = EntityManagerUtil.getEM();
 		this.em.getTransaction().begin();
-		this.em.persist(usuario);
+		this.em.persist(conta);
 		this.em.close();
 	}
 	
-	public Usuario buscaId(Long id) {
-		
-		Usuario u = null;
-		
+	public Conta buscaId(Long numero) {
+		Conta c = null;
 		this.em = EntityManagerUtil.getEM();
+		c = this.em.find(Conta.class, numero);
 		
-		u = this.em.find(Usuario.class, id);
-		
-		return u;
+		return c;
 	}
 	
-	public void deleta(Long id) {
-		
+	public void deleta(Long numero) {
 		this.em = EntityManagerUtil.getEM();
-		
-		Usuario u = this.em.find(Usuario.class, id);
+		Conta c = this.em.find(Conta.class, numero);
 
 		this.em.getTransaction().begin();
-		this.em.remove(u);
+		this.em.remove(c);
 		this.em.getTransaction().commit();
 		this.em.close();
 	}
 	
-	public void atualiza(Usuario u) {
-		
+	public void atualiza(Conta c) {
 		this.em = EntityManagerUtil.getEM();
 		this.em.getTransaction().begin();
-		this.em.merge(u);
+		this.em.merge(c);
 		this.em.getTransaction().commit();
 		this.em.close();
 	}
 	
-	public List<Usuario> busca(){
-		
-		List<Usuario> lista = null;
-		
-		this.em = EntityManagerUtil.getEM();
-		
-		TypedQuery<Usuario> query = this.em.createQuery(
-				"SELECT usr FROM Usuario usr", Usuario.class);
-		
-		lista = query.getResultList();
-		
-		return lista;
-	}
+//	public List<Conta> busca(){
+//
+//            List<Conta> lista = null;
+//
+//            this.em = EntityManagerUtil.getEM();
+//
+//            TypedQuery<Conta> query = this.em.createQuery(
+//                            "SELECT usr FROM Usuario usr", Conta.class);
+//
+//            lista = query.getResultList();
+//
+//            return lista;
+//	}
 	
-	public List<Usuario> buscaEmail(String email){
-		
-List<Usuario> lista = null;
-		
-		this.em = EntityManagerUtil.getEM();
-		
-		TypedQuery<Usuario> query = this.em.createQuery(
-				"SELECT usr FROM Usuario usr WHERE usr.email = :email", 
-				Usuario.class);
-		
-		query.setParameter("email", email);
-		
-		lista = query.getResultList();
-		
-		return lista;
+	public List<Conta> buscaPorCliente(String cpfCliente){
+            List<Conta> lista = null;
+            this.em = EntityManagerUtil.getEM();
+
+            TypedQuery<Conta> query = this.em.createQuery(
+                            "SELECT cnt FROM Conta cnt INNER JOIN conta_cliente\n" +
+"ON cnt.numero = conta_cliente.numero_conta WHERE conta_cliente.cpf_cliente = :cpfCliente", 
+                            Conta.class);
+
+            query.setParameter("email", email);
+
+            lista = query.getResultList();
+
+            return lista;
 	}
 	
 	

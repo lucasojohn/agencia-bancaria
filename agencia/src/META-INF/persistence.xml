@@ -5,6 +5,7 @@
     <class>agencia.Clientes</class>
     <class>agencia.TipoConta</class>
     <class>agencia.Conta</class>
+    <class>agencia.ContaCliente</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/agencia?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
