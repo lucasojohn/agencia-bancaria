@@ -36,10 +36,6 @@ public class MenuInicialController implements Initializable {
         
         switch(item.getId()){
             case "menuNovoCliente":
-                System.out.println("1@@@@@");
-                Clientes t = clienteDao.buscaCliente("10");
-                System.out.println("2@@@@@");
-                System.out.println(t.getCpf());
                 conteudo.setText("Cadastro de Cliente");
                 conteudo.setContent(Agencia.carregaTela("CadastroCliente"));
                 conteudo.setVisible(true);
