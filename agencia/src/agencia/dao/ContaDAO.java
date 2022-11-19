@@ -15,6 +15,7 @@ import util.EntityManagerUtil;
 public class ContaDAO {
 
 	private EntityManager em;
+        private Object email;
 	
 	public void salva(Conta conta) {
 		this.em = EntityManagerUtil.getEM();
