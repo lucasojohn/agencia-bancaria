@@ -23,7 +23,7 @@ public class ClienteDAO {
             this.em.close();
         }
         
-        public void deleta(Long cpf) {
+        public void deleta(String cpf) {
             this.em = EntityManagerUtil.getEM();
             Clientes c = this.em.find(Clientes.class, cpf);
 
@@ -33,7 +33,7 @@ public class ClienteDAO {
             this.em.close();
         }
         
-        public Clientes buscaCliente(Long cpf) {
+        public Clientes buscaCliente(String cpf) {
             Clientes c = null;
             this.em = EntityManagerUtil.getEM();
             c = this.em.find(Clientes.class, cpf);

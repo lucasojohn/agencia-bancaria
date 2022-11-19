@@ -48,9 +48,7 @@ public class ContaDAO {
 		this.em.merge(c);
 		this.em.getTransaction().commit();
 		this.em.close();
-	}
-	
-//	public List<Conta> busca(){
+	}//	public List<Conta> busca(){
 //
 //            List<Conta> lista = null;
 //
@@ -63,6 +61,8 @@ public class ContaDAO {
 //
 //            return lista;
 //	}
+	
+
 	
 	public List<Conta> buscaPorCliente(String cpfCliente){
             List<Conta> lista = null;

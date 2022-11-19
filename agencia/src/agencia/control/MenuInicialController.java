@@ -5,8 +5,11 @@
 package agencia.control;
 
 import agencia.Agencia;
+import agencia.Clientes;
+import agencia.dao.ClienteDAO;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +24,7 @@ import javafx.stage.Stage;
  * @author lucas
  */
 public class MenuInicialController implements Initializable {
+    ClienteDAO clienteDao = new ClienteDAO();
     
     @FXML
     private TitledPane conteudo;
@@ -32,6 +36,10 @@ public class MenuInicialController implements Initializable {
         
         switch(item.getId()){
             case "menuNovoCliente":
+                System.out.println("1@@@@@");
+                Clientes t = clienteDao.buscaCliente("10");
+                System.out.println("2@@@@@");
+                System.out.println(t.getCpf());
                 conteudo.setText("Cadastro de Cliente");
                 conteudo.setContent(Agencia.carregaTela("CadastroCliente"));
                 conteudo.setVisible(true);
