@@ -8,14 +8,13 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -53,11 +52,8 @@ public class Clientes implements Serializable {
     private String sexo;
     @Column(name = "endereco")
     private String endereco;
-    @JoinTable(name = "conta_cliente", joinColumns = {
-        @JoinColumn(name = "cpf_cliente", referencedColumnName = "cpf")}, inverseJoinColumns = {
-        @JoinColumn(name = "numero_conta", referencedColumnName = "numero")})
-    @ManyToMany
-    private Collection<Conta> contaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cpfCliente")
+    private Collection<ContaCliente> contaClienteCollection;
 
     public Clientes() {
     }
@@ -112,12 +108,12 @@ public class Clientes implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Conta> getContaCollection() {
-        return contaCollection;
+    public Collection<ContaCliente> getContaClienteCollection() {
+        return contaClienteCollection;
     }
 
-    public void setContaCollection(Collection<Conta> contaCollection) {
-        this.contaCollection = contaCollection;
+    public void setContaClienteCollection(Collection<ContaCliente> contaClienteCollection) {
+        this.contaClienteCollection = contaClienteCollection;
     }
 
     @Override
