@@ -68,17 +68,11 @@ public class ContaDAO {
             this.em = EntityManagerUtil.getEM();
 
             TypedQuery<Conta> query = this.em.createQuery(
-                            "SELECT cnt FROM Conta cnt INNER JOIN conta_cliente\n" +
-"ON cnt.numero = conta_cliente.numero_conta WHERE conta_cliente.cpf_cliente = :cpfCliente", 
-                            Conta.class);
-
-            query.setParameter("email", email);
-
+          "SELECT cnt FROM Conta cnt, ContaCliente cc WHERE cnt.contaCliente.cpfCliente = :cpfCliente", 
+            Conta.class);
+            query.setParameter("cpfCliente", cpfCliente);
             lista = query.getResultList();
 
             return lista;
 	}
-	
-	
-	//busca por email
 }
