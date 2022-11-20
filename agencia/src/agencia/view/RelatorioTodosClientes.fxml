@@ -8,9 +8,9 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.ClienteController">
    <children>
-      <Button id="sair" layoutX="632.0" layoutY="32.0" mnemonicParsing="false" onAction="#fechar" text="Ok" />
+      <Button id="sair" fx:id="sair" layoutX="632.0" layoutY="32.0" mnemonicParsing="false" onAction="#fechar" text="Ok" />
       <Label layoutX="36.0" layoutY="36.0" text="Relatório de clientes:" />
-      <TextField id="dados" disable="true" layoutX="36.0" layoutY="83.0" prefHeight="373.0" prefWidth="633.0" />
+      <TextField id="dados" fx:id="dados" disable="true" layoutX="36.0" layoutY="83.0" prefHeight="373.0" prefWidth="633.0" />
       <Slider layoutX="648.0" layoutY="89.0" orientation="VERTICAL" prefHeight="363.0" prefWidth="14.0" />
    </children>
 </AnchorPane>

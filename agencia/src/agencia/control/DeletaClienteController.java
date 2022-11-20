@@ -14,10 +14,9 @@ import javafx.scene.control.TextField;
  *
  * @author lucas
  */
-public class ClienteController implements Initializable {
+public class DeletaClienteController implements Initializable {
     
     @FXML
-    private Label label;
     private TextField cpf;
     private TextField nome;
     private TextField dataNasc;
@@ -29,6 +28,9 @@ public class ClienteController implements Initializable {
     private TextField saldo;
     private Button deletar;
     private Button cancelar;
+    private Button buscar;
+    private TextField dados;
+    private Button sair;
     
     
     @FXML
@@ -40,7 +42,6 @@ public class ClienteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
     
     
 }
