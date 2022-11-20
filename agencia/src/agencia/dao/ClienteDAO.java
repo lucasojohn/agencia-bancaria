@@ -14,12 +14,12 @@ import util.EntityManagerUtil;
  */
 public class ClienteDAO {
         private EntityManager em;
-        private Object email;
 
         public void salva(Clientes cliente) { 
             this.em = EntityManagerUtil.getEM();
             this.em.getTransaction().begin();
             this.em.persist(cliente);
+            this.em.getTransaction().commit();
             this.em.close();
         }
         

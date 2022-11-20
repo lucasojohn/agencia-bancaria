@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javax.persistence.EntityExistsException;
 
 /**
  *
@@ -58,12 +59,35 @@ public class CadastroClienteController implements Initializable {
         ClienteDAO dao = new ClienteDAO();
         Clientes c = new Clientes();
         
+        java.sql.Date dataDatePicker = java.sql.Date.valueOf(dataNasc.getValue());
+        
+        if (feminino.isSelected()) {
+            c.setSexo("f");
+        } else if (masculino.isSelected()) {
+            c.setSexo("m");
+        }
+                
         c.setCpf(cpf.getText());
         c.setNome(nome.getText());
         c.setEndereco(endereco.getText());
-        // c.setNascimento(nascimento.getText());
-        // c.setSexo(sexo.getText());
+        c.setNascimento(dataDatePicker);
+        if (feminino.isSelected()) {
+            c.setSexo("f");
+        } else if (masculino.isSelected()) {
+            c.setSexo("m");
+        }
         
+        System.out.println("teste chegou aqui 1");
+        
+        try {
+            System.out.println("teste chegou aqui 2");
+            dao.salva(c);
+            System.out.println("teste chegou aqui 3");
+        } catch (EntityExistsException e) {
+            validacao.setText("CPF já cadastrado.");
+            validacao.setVisible(true);
+        }
+
         // Criar a conta do banco
         
     }
