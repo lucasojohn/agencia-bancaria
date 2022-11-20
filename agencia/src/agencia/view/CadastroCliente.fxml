@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.ClienteController">
+<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.CadastroClienteController">
    <children>
       <Button id="cancelar" fx:id="cancelar" layoutX="350.0" layoutY="357.0" mnemonicParsing="false" onAction="#fechar" text="Cancelar" />
       <Label layoutX="36.0" layoutY="77.0" text="Nome:" />
@@ -24,7 +25,8 @@
       <TextField id="endereco" fx:id="endereco" layoutX="101.0" layoutY="205.0" prefHeight="25.0" prefWidth="521.0" />
       <TextField id="cpf" fx:id="cpf" layoutX="76.0" layoutY="32.0" prefHeight="25.0" prefWidth="175.0" />
       <TextField id="saldo" fx:id="saldo" layoutX="125.0" layoutY="296.0" />
-      <Button id="salvar" fx:id="salvar" layoutX="221.0" layoutY="357.0" mnemonicParsing="false" text="Salvar" />
+      <Button id="salvar" fx:id="salvar" layoutX="221.0" layoutY="357.0" mnemonicParsing="false" onAction="#salvarCliente" text="Salvar" />
       <DatePicker id="dataNasc" fx:id="dataNasc" layoutX="163.0" layoutY="114.0" />
+      <Text fx:id="validacao" fill="#dd0d0d" layoutX="234.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="validação" textAlignment="CENTER" visible="false" wrappingWidth="167.13671875" />
    </children>
 </AnchorPane>

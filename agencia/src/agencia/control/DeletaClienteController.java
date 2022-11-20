@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
  *
  * @author lucas
  */
-public class ClienteController implements Initializable {
+public class DeletaClienteController implements Initializable {
     
     @FXML
     private TextField cpf;
@@ -42,7 +42,6 @@ public class ClienteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
     
     
 }
