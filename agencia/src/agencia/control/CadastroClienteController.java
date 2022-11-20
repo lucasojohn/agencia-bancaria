@@ -37,8 +37,6 @@ public class CadastroClienteController implements Initializable {
     @FXML
     private TextField saldo;
     @FXML
-    private Button deletar;
-    @FXML
     private Button cancelar;
     @FXML
     private Text validacao;
@@ -55,10 +53,34 @@ public class CadastroClienteController implements Initializable {
 
     }
     
+    @FXML
+    public void setFeminino(ActionEvent event){
+        masculino.setSelected(false);
+
+    }
+    
+    @FXML
+    public void setMasculino(ActionEvent event){
+        feminino.setSelected(false);
+
+    }
+    
+    @FXML
+    public void setPoupanca(ActionEvent event){
+        contaCorrente.setSelected(false);
+    }
+    
+    @FXML
+    public void setCorrente(ActionEvent event){
+        contaPoupanca.setSelected(false);
+    }
+    
     private void validaCampos() {
         if (
                 cpf.getText().isEmpty() || nome.getText().isEmpty() || 
-                endereco.getText().isEmpty() || dataNasc == null
+                endereco.getText().isEmpty() || dataNasc.getValue() == null ||
+                (feminino.isSelected() || masculino.isSelected()) == false ||
+                (contaCorrente.isSelected() || contaPoupanca.isSelected()) == false
             ) {
             validacao.setText("Campo obrigatório não preenchido.");
             validacao.setVisible(true);

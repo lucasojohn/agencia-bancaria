@@ -15,18 +15,18 @@
       <Label layoutX="36.0" layoutY="118.0" text="Data de Nascimento:" />
       <Label layoutX="40.0" layoutY="160.0" text="Sexo:" />
       <Label layoutX="35.0" layoutY="207.0" text="Endereço:" />
-      <RadioButton id="masculino" fx:id="masculino" layoutX="117.0" layoutY="160.0" mnemonicParsing="false" text="Masculino" />
-      <RadioButton id="feminino" fx:id="feminino" layoutX="234.0" layoutY="160.0" mnemonicParsing="false" text="Feminino" />
+      <RadioButton id="masculino" fx:id="masculino" layoutX="117.0" layoutY="160.0" mnemonicParsing="false" onAction="#setMasculino" text="Masculino" />
+      <RadioButton id="feminino" fx:id="feminino" layoutX="234.0" layoutY="160.0" mnemonicParsing="false" onAction="#setFeminino" text="Feminino" />
       <Label layoutX="37.0" layoutY="249.0" text="Conta:" />
       <Label layoutX="35.0" layoutY="300.0" text="Saldo inicial:" />
-      <RadioButton id="contaCorrente" fx:id="contaCorrente" layoutX="113.0" layoutY="249.0" mnemonicParsing="false" text="Corrente" />
-      <RadioButton id="contaPoupanca" fx:id="contaPoupanca" layoutX="226.0" layoutY="249.0" mnemonicParsing="false" text="Poupança" />
+      <RadioButton id="contaCorrente" fx:id="contaCorrente" layoutX="113.0" layoutY="249.0" mnemonicParsing="false" onAction="#setCorrente" text="Corrente" />
+      <RadioButton id="contaPoupanca" fx:id="contaPoupanca" layoutX="226.0" layoutY="249.0" mnemonicParsing="false" onAction="#setPoupanca" text="Poupança" />
       <TextField id="nome" fx:id="nome" layoutX="87.0" layoutY="73.0" prefHeight="25.0" prefWidth="535.0" />
       <TextField id="endereco" fx:id="endereco" layoutX="101.0" layoutY="205.0" prefHeight="25.0" prefWidth="521.0" />
       <TextField id="cpf" fx:id="cpf" layoutX="76.0" layoutY="32.0" prefHeight="25.0" prefWidth="175.0" />
       <TextField id="saldo" fx:id="saldo" layoutX="125.0" layoutY="296.0" />
       <Button id="salvar" fx:id="salvar" layoutX="221.0" layoutY="357.0" mnemonicParsing="false" onAction="#salvarCliente" text="Salvar" />
       <DatePicker id="dataNasc" fx:id="dataNasc" layoutX="163.0" layoutY="114.0" />
-      <Text fx:id="validacao" fill="#dd0d0d" layoutX="234.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="validação" textAlignment="CENTER" visible="false" wrappingWidth="167.13671875" />
+      <Text fx:id="validacao" fill="#dd0d0d" layoutX="172.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" text="validação" textAlignment="CENTER" visible="false" wrappingWidth="264.13671875" />
    </children>
 </AnchorPane>
