@@ -1,5 +1,7 @@
 package agencia.control;
 
+import agencia.Clientes;
+import agencia.dao.ClienteDAO;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -51,6 +53,19 @@ public class CadastroClienteController implements Initializable {
     public void salvarCliente(ActionEvent event){
         validaCampos();
 
+        // validar se cliente com o CPF recebido ja existe
+        
+        ClienteDAO dao = new ClienteDAO();
+        Clientes c = new Clientes();
+        
+        c.setCpf(cpf.getText());
+        c.setNome(nome.getText());
+        c.setEndereco(endereco.getText());
+        // c.setNascimento(nascimento.getText());
+        // c.setSexo(sexo.getText());
+        
+        // Criar a conta do banco
+        
     }
     
     @FXML
