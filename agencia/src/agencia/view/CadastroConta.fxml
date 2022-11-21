@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.ContaController">
+<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.CadastroContaController">
    <children>
-        <Button id="salvar" fx:id="salvar" layoutX="229.0" layoutY="362.0" mnemonicParsing="false" text="Salvar" />
+        <Button id="salvar" fx:id="salvar" layoutX="229.0" layoutY="362.0" mnemonicParsing="false" onAction="#salvarConta" text="Salvar" />
         <Button id="cancelar" fx:id="cancelar" layoutX="339.0" layoutY="362.0" mnemonicParsing="false" onAction="#fechar" text="Cancelar" />
         <Label layoutX="21.0" layoutY="100.0" text="Conta:" />
         <Label layoutX="25.0" layoutY="167.0" text="Saldo inicial:" />
-        <RadioButton id="contaCorrente" fx:id="contaCorrente" layoutX="123.0" layoutY="100.0" mnemonicParsing="false" text="Corrente" />
-        <RadioButton id="contaPoupanca" fx:id="contaPoupanca" layoutX="221.0" layoutY="100.0" mnemonicParsing="false" text="Poupança" />
+        <RadioButton id="contaCorrente" fx:id="contaCorrente" layoutX="123.0" layoutY="100.0" mnemonicParsing="false" onAction="#setCorrente" text="Corrente" />
+        <RadioButton id="contaPoupanca" fx:id="contaPoupanca" layoutX="221.0" layoutY="100.0" mnemonicParsing="false" onAction="#setPoupanca" text="Poupança" />
         <TextField id="saldo" fx:id="saldo" layoutX="146.0" layoutY="167.0" />
         <Label layoutX="18.0" layoutY="28.0" text="Cliente:" />
-        <ChoiceBox id="cliente" fx:id="cliente" layoutX="145.0" layoutY="24.0" prefWidth="150.0" />  
+        <ChoiceBox id="cliente" fx:id="cliente" layoutX="145.0" layoutY="24.0" prefWidth="150.0" />
+      <Text fx:id="sucesso" fill="#2fc92a" layoutX="166.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="289.13671875" />
+      <Text fx:id="validacao" fill="#e81919" layoutX="166.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="312.13671875" />  
    </children>
 </AnchorPane>
