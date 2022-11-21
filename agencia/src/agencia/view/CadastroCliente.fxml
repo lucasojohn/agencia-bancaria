@@ -28,5 +28,6 @@
       <Button id="salvar" fx:id="salvar" layoutX="221.0" layoutY="357.0" mnemonicParsing="false" onAction="#salvarCliente" text="Salvar" />
       <DatePicker id="dataNasc" fx:id="dataNasc" layoutX="163.0" layoutY="114.0" />
       <Text fx:id="validacao" fill="#dd0d0d" layoutX="172.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" text="validação" textAlignment="CENTER" visible="false" wrappingWidth="264.13671875" />
+      <Text fx:id="sucesso" fill="#63cd4e" layoutX="203.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="201.13671875" />
    </children>
 </AnchorPane>
