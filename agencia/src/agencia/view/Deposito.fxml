@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.paint.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,14 +8,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.ContaController">
+<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.DepositoController">
     <children>
-       <Button id="salvar" fx:id="salvar" layoutX="222.0" layoutY="254.0" mnemonicParsing="false" text="Salvar" />
-       <Button id="cancelar" fx:id="cancelar" layoutX="355.0" layoutY="254.0" mnemonicParsing="false" onAction="#fechar" text="Cancelar" />
+       <Button id="salvar" fx:id="salvar" layoutX="197.0" layoutY="292.0" mnemonicParsing="false" onAction="#salvar" text="Salvar" />
+       <Button id="cancelar" fx:id="cancelar" layoutX="319.0" layoutY="292.0" mnemonicParsing="false" onAction="#fechar" text="Cancelar" />
        <Label layoutX="15.0" layoutY="69.0" text="Conta:" />
        <Label layoutX="17.0" layoutY="137.0" text="Valor:" />
-       <TextField id="conta" fx:id="conta" layoutX="69.0" layoutY="65.0" prefHeight="25.0" prefWidth="180.0" />
        <TextField id="valor" fx:id="valor" layoutX="71.0" layoutY="133.0" prefHeight="25.0" prefWidth="175.0" />
-       <Label id="erroDeposito" fx:id="erroDeposito" layoutX="232.0" layoutY="336.0" text="Valor precisa ser maior que zero!" textFill="#ff0303" />
+      <ChoiceBox fx:id="conta" layoutX="71.0" layoutY="65.0" prefWidth="150.0" />
+      <Text fx:id="validacao" fill="#e40b0b" layoutX="190.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="232.0" />
+      <Text fx:id="sucesso" fill="#2db23d" layoutX="170.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="232.0" />
     </children>
 </AnchorPane>
