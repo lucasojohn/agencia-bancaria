@@ -2,10 +2,8 @@ package agencia.control;
 
 import agencia.Clientes;
 import agencia.Conta;
-import agencia.TipoConta;
 import agencia.dao.ClienteDAO;
 import agencia.dao.ContaDAO;
-import agencia.dao.TpContaDAO;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -101,9 +99,9 @@ public class CadastroClienteController implements Initializable {
         BigDecimal saldoDecimal = new BigDecimal(Float.toString(Float.parseFloat(saldo.getText())));
         conta.setSaldo(saldoDecimal);
         if (contaCorrente.isSelected()) {
-            conta.setTpConta(contaDao.buscaTipoConta(TpContaDAO.CONTA_CORRENTE));
+            conta.setTpConta(contaDao.buscaTipoConta(ContaDAO.CONTA_CORRENTE));
         } else if (contaPoupanca.isSelected()) {
-            conta.setTpConta(contaDao.buscaTipoConta(TpContaDAO.CONTA_POUPANCA));
+            conta.setTpConta(contaDao.buscaTipoConta(ContaDAO.CONTA_POUPANCA));
         }
         
         contaDao.salva(conta);

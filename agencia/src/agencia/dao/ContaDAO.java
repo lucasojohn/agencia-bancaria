@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package agencia.dao;
 
 import java.util.List;
@@ -76,7 +72,16 @@ public class ContaDAO {
 
             return lista;
 	}
-	
-	
-	//busca por email
+        
+	public void deletaBulk(List<Conta> contas){
+            this.em = EntityManagerUtil.getEM();
+            this.em.getTransaction().begin();
+            
+            for (Conta conta : contas) {
+                this.em.remove(conta);
+            }
+            this.em.getTransaction().commit();
+            this.em.close();
+	}
+
 }
