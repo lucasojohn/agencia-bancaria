@@ -10,16 +10,29 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import agencia.Conta;
+import agencia.TipoConta;
 import util.EntityManagerUtil;
 
 public class ContaDAO {
 
 	private EntityManager em;
         
+        public static final String CONTA_CORRENTE = "1";
+        public static final String CONTA_POUPANCA = "2";
+	
+	public TipoConta buscaTipoConta(String cod) {
+		TipoConta tc = null;
+		this.em = EntityManagerUtil.getEM();
+		tc = this.em.find(TipoConta.class, cod);
+
+		return tc;
+	}
+        
 	public void salva(Conta conta) {
 		this.em = EntityManagerUtil.getEM();
 		this.em.getTransaction().begin();
 		this.em.persist(conta);
+                this.em.getTransaction().commit();
 		this.em.close();
 	}
 	

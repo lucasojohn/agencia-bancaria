@@ -1,9 +1,6 @@
 package agencia.dao;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 
 import agencia.TipoConta;
 import util.EntityManagerUtil;

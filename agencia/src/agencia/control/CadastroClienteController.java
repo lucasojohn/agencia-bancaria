@@ -26,7 +26,6 @@ import javax.persistence.PersistenceException;
 public class CadastroClienteController implements Initializable {
     ClienteDAO clienteDao = new ClienteDAO();
     ContaDAO contaDao = new ContaDAO();
-    TpContaDAO tpContaDao = new TpContaDAO();
     
     @FXML
     private TextField cpf;
@@ -88,16 +87,7 @@ public class CadastroClienteController implements Initializable {
         } else if (masculino.isSelected()) {
             cliente.setSexo("m");
         }
-        
-        BigDecimal saldoDecimal = new BigDecimal(Float.toString(Float.parseFloat(saldo.getText())));
-        conta.setSaldo(saldoDecimal);
-        if (contaCorrente.isSelected()) {
-            conta.setTpConta(tpContaDao.buscaId(TpContaDAO.CONTA_CORRENTE));
-        } else if (contaPoupanca.isSelected()) {
-            conta.setTpConta(tpContaDao.buscaId(TpContaDAO.CONTA_POUPANCA));
-        }
-        
-        
+
         try {
             clienteDao.salva(cliente);
         } catch (PersistenceException e) {
@@ -108,7 +98,15 @@ public class CadastroClienteController implements Initializable {
             return;
         }
         
-        // Criar a conta do banco
+        BigDecimal saldoDecimal = new BigDecimal(Float.toString(Float.parseFloat(saldo.getText())));
+        conta.setSaldo(saldoDecimal);
+        if (contaCorrente.isSelected()) {
+            conta.setTpConta(contaDao.buscaTipoConta(TpContaDAO.CONTA_CORRENTE));
+        } else if (contaPoupanca.isSelected()) {
+            conta.setTpConta(contaDao.buscaTipoConta(TpContaDAO.CONTA_POUPANCA));
+        }
+        
+        contaDao.salva(conta);
         
         cancelar.setDisable(false);
         salvar.setDisable(false);
