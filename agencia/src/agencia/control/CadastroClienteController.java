@@ -2,7 +2,9 @@ package agencia.control;
 
 import agencia.Clientes;
 import agencia.Conta;
+import agencia.ContaCliente;
 import agencia.dao.ClienteDAO;
+import agencia.dao.ContaClienteDAO;
 import agencia.dao.ContaDAO;
 import java.math.BigDecimal;
 import java.net.URL;
@@ -24,6 +26,7 @@ import javax.persistence.PersistenceException;
 public class CadastroClienteController implements Initializable {
     ClienteDAO clienteDao = new ClienteDAO();
     ContaDAO contaDao = new ContaDAO();
+    ContaClienteDAO contaClienteDao = new ContaClienteDAO();
     
     @FXML
     private TextField cpf;
@@ -72,8 +75,9 @@ public class CadastroClienteController implements Initializable {
             return;
         }
         
+        // Persistencia - cliente
+        
         Clientes cliente = new Clientes();
-        Conta conta = new Conta();
         
         java.sql.Date dataDatePicker = java.sql.Date.valueOf(dataNasc.getValue());     
         cliente.setCpf(cpf.getText());
@@ -96,6 +100,10 @@ public class CadastroClienteController implements Initializable {
             return;
         }
         
+        // Persistencia - conta
+        
+        Conta conta = new Conta();
+        
         BigDecimal saldoDecimal = new BigDecimal(Float.toString(Float.parseFloat(saldo.getText())));
         conta.setSaldo(saldoDecimal);
         if (contaCorrente.isSelected()) {
@@ -105,6 +113,14 @@ public class CadastroClienteController implements Initializable {
         }
         
         contaDao.salva(conta);
+        
+        // Persistencia - contaCliente
+        
+        ContaCliente contaCliente = new ContaCliente();
+        contaCliente.setCpfCliente(cliente);
+        contaCliente.setNumeroConta(conta);
+        
+        contaClienteDao.salva(contaCliente);
         
         cancelar.setDisable(false);
         salvar.setDisable(false);
