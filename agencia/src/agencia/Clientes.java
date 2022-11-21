@@ -49,7 +49,7 @@ public class Clientes implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date nascimento;
     @Column(name = "sexo")
-    private String sexo;
+    public String sexo;
     @Column(name = "endereco")
     private String endereco;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cpfCliente")
