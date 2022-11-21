@@ -49,6 +49,16 @@ public class ContaDAO {
 		this.em.getTransaction().commit();
 		this.em.close();
 	}
+        
+	public List<Conta> lista(){
+            List<Conta> lista = null;
+            this.em = EntityManagerUtil.getEM();
+            TypedQuery<Conta> query = this.em.createQuery(
+                            "SELECT c FROM Conta c", Conta.class);
+            lista = query.getResultList();
+
+            return lista;
+	}
 	
 	public void atualiza(Conta c) {
 		this.em = EntityManagerUtil.getEM();

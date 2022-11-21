@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.ContaController">
+<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.DeletaContaController">
    <children>
-       <Button id="deletar" fx:id="deletar" layoutX="229.0" layoutY="362.0" mnemonicParsing="false" text="Deletar" />
+       <Button id="deletar" fx:id="deletar" disable="true" layoutX="229.0" layoutY="362.0" mnemonicParsing="false" onAction="#deletar" text="Deletar" />
         <Button id="cancelar" fx:id="cancelar" layoutX="339.0" layoutY="362.0" mnemonicParsing="false" onAction="#fechar" text="Cancelar" />
         <Label layoutX="25.0" layoutY="167.0" text="Saldo:" />
-        <TextField id="saldo" fx:id="saldo" disable="true" layoutX="146.0" layoutY="167.0" />
+        <TextField id="saldo" fx:id="saldo" disable="true" editable="false" layoutX="146.0" layoutY="167.0" />
         <Label layoutX="18.0" layoutY="28.0" text="Cliente:" />
-        <ChoiceBox id="cliente" fx:id="cliente" layoutX="145.0" layoutY="24.0" prefHeight="25.0" prefWidth="216.0" />
+        <ChoiceBox id="cliente" fx:id="cliente" layoutX="145.0" layoutY="24.0" onAction="#habilitarConta" prefHeight="25.0" prefWidth="216.0" />
         <Label layoutX="21.0" layoutY="99.0" text="Conta:" />
-        <ChoiceBox id="comboConta" fx:id="comboConta" disable="true" layoutX="145.0" layoutY="95.0" prefHeight="25.0" prefWidth="214.0" />
+        <ChoiceBox id="comboConta" fx:id="comboConta" disable="true" layoutX="145.0" layoutY="95.0" onAction="#popularSaldo" prefHeight="25.0" prefWidth="214.0" />
+      <Text fx:id="sucesso" fill="#53b234" layoutX="153.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="305.13671875" />
    </children>
 </AnchorPane>

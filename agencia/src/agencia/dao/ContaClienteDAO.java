@@ -25,18 +25,32 @@ public class ContaClienteDAO {
 		this.em.close();
 	}
 
-	
-	public void deleta(Long numero) {
+        
+	public ContaCliente buscaId(Long numero) {
+		ContaCliente cc = null;
 		this.em = EntityManagerUtil.getEM();
-		ContaCliente cc = this.em.find(ContaCliente.class, numero);
+		cc = this.em.find(ContaCliente.class, numero);
+		
+		return cc;
+	}
+	
+	public void deletaPorConta(Conta conta) {
+		this.em = EntityManagerUtil.getEM();
+                TypedQuery<ContaCliente> query = this.em.createQuery(
+                                "SELECT cc FROM ContaCliente cc WHERE cc.numeroConta = :conta", 
+                                ContaCliente.class);
 
+                query.setParameter("conta", conta);
+                
+                ContaCliente cc = query.getResultList().get(0);
+                
 		this.em.getTransaction().begin();
 		this.em.remove(cc);
 		this.em.getTransaction().commit();
 		this.em.close();
 	}
 
-
+                    
 	public void deletaPorCliente(String cpfCliente){
             List<ContaCliente> lista = null;
             this.em = EntityManagerUtil.getEM();
