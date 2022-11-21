@@ -1,7 +1,12 @@
 package agencia.control;
 
 import agencia.Clientes;
+import agencia.Conta;
+import agencia.TipoConta;
 import agencia.dao.ClienteDAO;
+import agencia.dao.ContaDAO;
+import agencia.dao.TpContaDAO;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -9,11 +14,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import javax.persistence.EntityExistsException;
 import javax.persistence.PersistenceException;
 
 /**
@@ -21,6 +24,9 @@ import javax.persistence.PersistenceException;
  * @author lucas
  */
 public class CadastroClienteController implements Initializable {
+    ClienteDAO clienteDao = new ClienteDAO();
+    ContaDAO contaDao = new ContaDAO();
+    TpContaDAO tpContaDao = new TpContaDAO();
     
     @FXML
     private TextField cpf;
@@ -68,30 +74,32 @@ public class CadastroClienteController implements Initializable {
             salvar.setDisable(false);
             return;
         }
-
-        // validar se cliente com o CPF recebido ja existe
         
-        ClienteDAO dao = new ClienteDAO();
         Clientes cliente = new Clientes();
+        Conta conta = new Conta();
         
-        java.sql.Date dataDatePicker = java.sql.Date.valueOf(dataNasc.getValue());
-                
+        java.sql.Date dataDatePicker = java.sql.Date.valueOf(dataNasc.getValue());     
         cliente.setCpf(cpf.getText());
         cliente.setNome(nome.getText());
         cliente.setEndereco(endereco.getText());
         cliente.setNascimento(dataDatePicker);
-        
-        // conta.setSaldo(Float.parseFloat(saldo.getText()));
-        
-        
         if (feminino.isSelected()) {
             cliente.setSexo("f");
         } else if (masculino.isSelected()) {
             cliente.setSexo("m");
         }
         
+        BigDecimal saldoDecimal = new BigDecimal(Float.toString(Float.parseFloat(saldo.getText())));
+        conta.setSaldo(saldoDecimal);
+        if (contaCorrente.isSelected()) {
+            conta.setTpConta(tpContaDao.buscaId(TpContaDAO.CONTA_CORRENTE));
+        } else if (contaPoupanca.isSelected()) {
+            conta.setTpConta(tpContaDao.buscaId(TpContaDAO.CONTA_POUPANCA));
+        }
+        
+        
         try {
-            dao.salva(cliente);
+            clienteDao.salva(cliente);
         } catch (PersistenceException e) {
             validacao.setText("CPF já cadastrado.");
             validacao.setVisible(true);
@@ -156,7 +164,11 @@ public class CadastroClienteController implements Initializable {
             return false;
         }
         
-        System.out.println(cpf.getText().length());
+        if (clienteDao.buscaCliente(cpf.getText()) != null) {
+            validacao.setText("CPF já cadastrado.");
+            validacao.setVisible(true);
+            return false;
+        }
         
         if (cpf.getText().length() != 11) {
             validacao.setText("O CPF deve possuir 11 dígitos.");

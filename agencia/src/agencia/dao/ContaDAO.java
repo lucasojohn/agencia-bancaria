@@ -15,8 +15,7 @@ import util.EntityManagerUtil;
 public class ContaDAO {
 
 	private EntityManager em;
-        private Object email;
-	
+        
 	public void salva(Conta conta) {
 		this.em = EntityManagerUtil.getEM();
 		this.em.getTransaction().begin();
@@ -48,32 +47,17 @@ public class ContaDAO {
 		this.em.merge(c);
 		this.em.getTransaction().commit();
 		this.em.close();
-	}//	public List<Conta> busca(){
-//
-//            List<Conta> lista = null;
-//
-//            this.em = EntityManagerUtil.getEM();
-//
-//            TypedQuery<Conta> query = this.em.createQuery(
-//                            "SELECT usr FROM Usuario usr", Conta.class);
-//
-//            lista = query.getResultList();
-//
-//            return lista;
-//	}
-	
+	}
 
-	
 	public List<Conta> buscaPorCliente(String cpfCliente){
             List<Conta> lista = null;
             this.em = EntityManagerUtil.getEM();
 
             TypedQuery<Conta> query = this.em.createQuery(
-                            "SELECT cnt FROM Conta cnt INNER JOIN conta_cliente\n" +
-"ON cnt.numero = conta_cliente.numero_conta WHERE conta_cliente.cpf_cliente = :cpfCliente", 
+                            "SELECT cnt FROM Conta cnt WHERE cnt.contaCliente.cpfCliente = :cpfCliente", 
                             Conta.class);
 
-            query.setParameter("email", email);
+            query.setParameter("cpfCliente", cpfCliente);
 
             lista = query.getResultList();
 

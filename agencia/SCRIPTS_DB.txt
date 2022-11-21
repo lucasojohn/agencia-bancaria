@@ -1,0 +1,49 @@
+-- agencia.clientes definition
+
+CREATE TABLE `clientes` (
+  `cpf` varchar(11) NOT NULL,
+  `nome` varchar(60) NOT NULL,
+  `nascimento` date DEFAULT NULL,
+  `sexo` varchar(1) DEFAULT NULL,
+  `endereco` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`cpf`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- agencia.tipo_conta definition
+
+CREATE TABLE `tipo_conta` (
+  `cod_conta` varchar(1) NOT NULL,
+  `descricao` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`cod_conta`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- agencia.conta definition
+
+CREATE TABLE `conta` (
+  `saldo` decimal(15,2) DEFAULT NULL,
+  `taxa_conta` decimal(6,2) DEFAULT NULL,
+  `tp_conta` varchar(1) NOT NULL,
+  `numero` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`numero`),
+  KEY `conta_FK` (`tp_conta`),
+  CONSTRAINT `conta_FK` FOREIGN KEY (`tp_conta`) REFERENCES `tipo_conta` (`cod_conta`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- agencia.conta_cliente definition
+
+CREATE TABLE `conta_cliente` (
+  `numero_conta` bigint(20) unsigned NOT NULL,
+  `cpf_cliente` varchar(11) NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `conta_cliente_un` (`numero_conta`),
+  KEY `conta_cliente_FK` (`cpf_cliente`),
+  CONSTRAINT `conta_cliente_FK` FOREIGN KEY (`cpf_cliente`) REFERENCES `clientes` (`cpf`),
+  CONSTRAINT `conta_cliente_FK_1` FOREIGN KEY (`numero_conta`) REFERENCES `conta` (`numero`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO agencia.tipo_conta (cod_conta,descricao) VALUES
+	 ('1','Conta Corrente'),
+	 ('2','Conta Poupanca');
