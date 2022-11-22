@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.ContaController">
+<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agencia.control.TransferenciaController">
     <children>
-       <Button id="salvar" fx:id="salvar" layoutX="222.0" layoutY="254.0" mnemonicParsing="false" text="Salvar" />
+       <Button id="salvar" fx:id="salvar" layoutX="222.0" layoutY="254.0" mnemonicParsing="false" onAction="#salvar" text="Salvar" />
        <Button id="cancelar" fx:id="cancelar" layoutX="355.0" layoutY="254.0" mnemonicParsing="false" onAction="#fechar" text="Cancelar" />
        <TextField id="contaOrigem" fx:id="contaOrigem" layoutX="132.0" layoutY="65.0" prefHeight="25.0" prefWidth="180.0" />
-       <Label id="erroTransferencia" fx:id="erroTransferencia" layoutX="232.0" layoutY="336.0" text="A conta de destino deve ser diferente da conta origem!" textFill="#ee0202" />
+       <Label id="erroTransferencia" fx:id="erroTransferencia" layoutX="197.0" layoutY="331.0" text="A conta de destino deve ser diferente da conta origem!" textAlignment="CENTER" textFill="#ee0202" visible="false" />
       <Label layoutX="25.0" layoutY="69.0" text="Conta de origem:" />
       <Label layoutX="25.0" layoutY="127.0" text="Conta de destino:" />
       <TextField id="contaDestino" fx:id="contaDestino" layoutX="132.0" layoutY="123.0" prefHeight="25.0" prefWidth="180.0" />
       <TextField id="valor" fx:id="valor" layoutX="132.0" layoutY="180.0" prefHeight="25.0" prefWidth="180.0" />
       <Label layoutX="25.0" layoutY="184.0" text="Valor:" />
+      <Text fx:id="sucesso" fill="#41c327" layoutX="188.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="310.13671875" />
     </children>
 </AnchorPane>
