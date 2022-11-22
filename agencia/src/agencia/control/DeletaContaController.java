@@ -20,7 +20,7 @@ public class DeletaContaController implements Initializable {
     ClienteDAO clienteDao = new ClienteDAO();
     ContaDAO contaDao = new ContaDAO();
     ContaClienteDAO contaClienteDao = new ContaClienteDAO();
-    
+        
     @FXML
     private Button deletar;
 
@@ -52,7 +52,7 @@ public class DeletaContaController implements Initializable {
        
         contaClienteDao.deletaPorConta(contaDao.buscaId((Long) comboConta.getValue()));
         contaDao.deleta((Long) comboConta.getValue());
-        comboConta.getItems().remove(comboConta.getValue());
+        comboConta.getItems().clear();
         
         limpaCampos();
         
@@ -75,9 +75,13 @@ public class DeletaContaController implements Initializable {
     }
     
     @FXML
-    public void habilitarConta(ActionEvent event){       
+    public void habilitarConta(ActionEvent event){  
         if (cliente.getValue() != null) {
             comboConta.setDisable(false);
+            List<Conta> contas = contaDao.lista();
+            for (Conta conta : contas) {
+                comboConta.getItems().add(conta.getNumero());
+            }
         }
     }  
   
@@ -94,16 +98,8 @@ public class DeletaContaController implements Initializable {
         for (Clientes c : clientes) {
             cliente.getItems().add(c.getCpf());
         }
-        
-        List<Conta> contas = contaDao.lista();
-        
-        for (Conta conta : contas) {
-            comboConta.getItems().add(conta.getNumero());
-        }
     }  
-    
-    
-    
+     
 }
 
 
