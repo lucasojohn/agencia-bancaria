@@ -54,10 +54,11 @@ public class RelatorioTodosClientesController {
     public void buscarTodosClientes(ActionEvent event) {
         
         List<Clientes> listaClientes = clienteDao.lista();
-        this.contasCliente = contaDao.buscaPorCliente(this.cliente);
-
-        for (listaClientes : this.cliente) {
+        
+        for (Clientes lista : listaClientes ) {
             this.cliente = clienteDao.buscaCliente(cpf.getText());
+            this.contasCliente = contaDao.buscaPorCliente(this.cliente);
+            
             if(this.cliente == null){
                 msgErro.setVisible(true);
                 dados.setText("");
