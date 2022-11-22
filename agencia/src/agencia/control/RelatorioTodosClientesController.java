@@ -9,35 +9,27 @@ import agencia.Conta;
 import agencia.dao.ClienteDAO;
 import agencia.dao.ContaClienteDAO;
 import agencia.dao.ContaDAO;
-import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
-import util.EntityManagerUtil;
 
 /**
  *
  * @author lucas
  */
-public class RelatorioClienteController {
-    
+public class RelatorioTodosClientesController {
+
     ClienteDAO clienteDao = new ClienteDAO();
     ContaDAO contaDao = new ContaDAO();
     ContaClienteDAO contaClienteDao = new ContaClienteDAO();
     
     @FXML
-    private Button cancelar;
+    private Button sair;
     @FXML
     private TextField dados;
-    @FXML
-    private Button buscar;
-    @FXML
     private TextField cpf;
     @FXML
     private Label msgErro;
@@ -49,6 +41,8 @@ public class RelatorioClienteController {
     private TextField nrContas;
     @FXML
     private TextField saldo;
+    @FXML
+    private Button btnListar;
     
     @FXML
     public void fechar(ActionEvent event){       
@@ -60,16 +54,13 @@ public class RelatorioClienteController {
         List<Clientes> listaClientes = clienteDao.lista();
         this.cliente = clienteDao.buscaCliente(cpf.getText());
         this.contasCliente = contaDao.buscaPorCliente(this.cliente);
-        
-       
+
         if(this.cliente == null){
             msgErro.setVisible(true);
             dados.setText("");
-            return;
         }
          msgErro.setVisible(false);
-        // limpa campos da pesquisa anterior
-        limpaCampos();
+        
 
         String descricao = "";
         descricao += "\nCPF: " + this.cliente.getCpf();
@@ -87,24 +78,9 @@ public class RelatorioClienteController {
             descricao += "\nTaxa: " + conta.getTaxaConta();
             descricao += "\n";
         }
-        dados.setText(descricao);
+        //dados.setText(descricao);
+        
     }
     
-    private void limpaCampos() {
-        dados.setText("");
-    }
     
-    public static void fecharUmaTela(ActionEvent event){
-        Node no = (Node) event.getSource();
-        
-        while (no != null && !(no instanceof TitledPane)) {
-            no = no.getParent();
-        }
-        
-        if (no != null) {
-            TitledPane tp = (TitledPane)no;
-            tp.setContent(null);
-            tp.setVisible(false);
-        }
-    }
 }

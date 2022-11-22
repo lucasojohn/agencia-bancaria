@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TitledPane;
 import javafx.stage.Stage;
+import agencia.control.RelatorioTodosClientesController;
 
 /**
  *
