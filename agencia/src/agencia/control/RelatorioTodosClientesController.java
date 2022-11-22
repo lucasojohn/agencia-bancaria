@@ -9,81 +9,89 @@ import agencia.Conta;
 import agencia.dao.ClienteDAO;
 import agencia.dao.ContaClienteDAO;
 import agencia.dao.ContaDAO;
+import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 /**
  *
  * @author lucas
  */
-public class RelatorioTodosClientesController {
+public class RelatorioTodosClientesController implements Initializable {
 
     ClienteDAO clienteDao = new ClienteDAO();
     ContaDAO contaDao = new ContaDAO();
     ContaClienteDAO contaClienteDao = new ContaClienteDAO();
     
+    private List<Clientes> clientes = null;
     @FXML
     private Button sair;
     @FXML
-    private TextField dados;
+    private TextArea dados;
+    @FXML
     private TextField cpf;
     @FXML
     private Label msgErro;
-    @FXML
-    private List<Conta> contasCliente = null;
-    @FXML
-    private List<Clientes> clientes = null;
     @FXML
     private Clientes cliente = null;
     @FXML
     private TextField nrContas;
     @FXML
     private TextField saldo;
-    @FXML
-    private Button btnListar;
     
     @FXML
     public void fechar(ActionEvent event){       
         MenuInicialController.fecharUmaTela(event);
-    }
+    }    
     
-    public void buscarTodosClientes(ActionEvent event) {
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
         
-        List<Clientes> listaClientes = clienteDao.lista();
+        this.clientes = clienteDao.lista();
         
-        for (Clientes lista : listaClientes ) {
-            this.cliente = clienteDao.buscaCliente(cpf.getText());
-            this.contasCliente = contaDao.buscaPorCliente(this.cliente);
+        if(this.clientes.size() == 0){
+            dados.setText("Não existem clientes cadastrados!");
+            return;
+        }
+        
+        String descricao = "";
+        for (Clientes c : this.clientes) {
             
-            if(this.cliente == null){
-                msgErro.setVisible(true);
+            if(c == null){
                 dados.setText("");
             }
-            msgErro.setVisible(false);
             
-            String descricao = "";
-            descricao += "\nCPF: " + this.cliente.getCpf();
-            descricao += "\n";
-            descricao += "\nNome: " + this.cliente.getNome();
-            descricao += "\nData de Nascimento: " + this.cliente.getNascimento();
-            descricao += "\nSexo: " + this.cliente.getSexo();
-            descricao += "\nEndereço: " + this.cliente.getEndereco();
+            List<Conta> contasCliente = contaDao.buscaPorCliente(c);
+            
+            descricao += "CPF: " + c.getCpf();
+            descricao += "\nNome: " + c.getNome();
+            SimpleDateFormat fd = new SimpleDateFormat("dd-MM-yyyy");
+            descricao += "\nData de Nascimento: " + fd.format(c.getNascimento());
+            descricao += "\nSexo: " + c.getSexo();
+            descricao += "\nEndereço: " + c.getEndereco();
             descricao += "\nConta(s):";
 
-            for (Conta conta : this.contasCliente) {
-                descricao += "\nNumero da Conta: " + conta.getNumero();
-                descricao += "\nTipo de Conta: " + conta.getTpConta();
-                descricao += "\nSaldo: " + conta.getSaldo();
-                descricao += "\nTaxa: " + conta.getTaxaConta();
+            for (Conta conta : contasCliente) {
                 descricao += "\n";
+                descricao += "\n  Numero da Conta: " + conta.getNumero();
+                descricao += "\n  Tipo de Conta: " + conta.getTpConta().getDescricao();
+                descricao += "\n  Saldo: " + conta.getSaldo();
             }
+            descricao += "\n";
+            descricao += "\n";
+            
+            dados.setText(descricao);
             
         }
         
-    }
+    }  
     
 }

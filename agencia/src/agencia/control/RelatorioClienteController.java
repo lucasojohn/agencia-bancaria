@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import util.EntityManagerUtil;
@@ -34,7 +35,7 @@ public class RelatorioClienteController {
     @FXML
     private Button cancelar;
     @FXML
-    private TextField dados;
+    private TextArea dados;
     @FXML
     private Button buscar;
     @FXML
@@ -63,7 +64,7 @@ public class RelatorioClienteController {
        
         if(this.cliente == null){
             msgErro.setVisible(true);
-            dados.setText("");
+            dados.setText("Cliente inválido!");
             return;
         }
          msgErro.setVisible(false);
@@ -72,19 +73,18 @@ public class RelatorioClienteController {
 
         String descricao = "";
         descricao += "\nCPF: " + this.cliente.getCpf();
-        descricao += "\n";
         descricao += "\nNome: " + this.cliente.getNome();
-        descricao += "\nData de Nascimento: " + this.cliente.getNascimento();
+        SimpleDateFormat fd = new SimpleDateFormat("dd-MM-yyyy");
+        descricao += "\nData de Nascimento: " + fd.format(this.cliente.getNascimento());
         descricao += "\nSexo: " + this.cliente.getSexo();
         descricao += "\nEndereço: " + this.cliente.getEndereco();
         descricao += "\nConta(s):";
         
         for (Conta conta : this.contasCliente) {
-            descricao += "\nNumero da Conta: " + conta.getNumero();
-            descricao += "\nTipo de Conta: " + conta.getTpConta();
-            descricao += "\nSaldo: " + conta.getSaldo();
-            descricao += "\nTaxa: " + conta.getTaxaConta();
             descricao += "\n";
+            descricao += "\nNumero da Conta: " + conta.getNumero();
+            descricao += "\nTipo de Conta: " + conta.getTpConta().getDescricao();
+            descricao += "\nSaldo: " + conta.getSaldo();
         }
         dados.setText(descricao);
     }
