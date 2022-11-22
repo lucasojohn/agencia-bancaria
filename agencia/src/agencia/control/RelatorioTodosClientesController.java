@@ -36,6 +36,8 @@ public class RelatorioTodosClientesController {
     @FXML
     private List<Conta> contasCliente = null;
     @FXML
+    private List<Clientes> clientes = null;
+    @FXML
     private Clientes cliente = null;
     @FXML
     private TextField nrContas;
@@ -52,35 +54,35 @@ public class RelatorioTodosClientesController {
     public void buscarTodosClientes(ActionEvent event) {
         
         List<Clientes> listaClientes = clienteDao.lista();
-        this.cliente = clienteDao.buscaCliente(cpf.getText());
         this.contasCliente = contaDao.buscaPorCliente(this.cliente);
 
-        if(this.cliente == null){
-            msgErro.setVisible(true);
-            dados.setText("");
-        }
-         msgErro.setVisible(false);
-        
-
-        String descricao = "";
-        descricao += "\nCPF: " + this.cliente.getCpf();
-        descricao += "\n";
-        descricao += "\nNome: " + this.cliente.getNome();
-        descricao += "\nData de Nascimento: " + this.cliente.getNascimento();
-        descricao += "\nSexo: " + this.cliente.getSexo();
-        descricao += "\nEndereço: " + this.cliente.getEndereco();
-        descricao += "\nConta(s):";
-        
-        for (Conta conta : this.contasCliente) {
-            descricao += "\nNumero da Conta: " + conta.getNumero();
-            descricao += "\nTipo de Conta: " + conta.getTpConta();
-            descricao += "\nSaldo: " + conta.getSaldo();
-            descricao += "\nTaxa: " + conta.getTaxaConta();
+        for (listaClientes : this.cliente) {
+            this.cliente = clienteDao.buscaCliente(cpf.getText());
+            if(this.cliente == null){
+                msgErro.setVisible(true);
+                dados.setText("");
+            }
+            msgErro.setVisible(false);
+            
+            String descricao = "";
+            descricao += "\nCPF: " + this.cliente.getCpf();
             descricao += "\n";
+            descricao += "\nNome: " + this.cliente.getNome();
+            descricao += "\nData de Nascimento: " + this.cliente.getNascimento();
+            descricao += "\nSexo: " + this.cliente.getSexo();
+            descricao += "\nEndereço: " + this.cliente.getEndereco();
+            descricao += "\nConta(s):";
+
+            for (Conta conta : this.contasCliente) {
+                descricao += "\nNumero da Conta: " + conta.getNumero();
+                descricao += "\nTipo de Conta: " + conta.getTpConta();
+                descricao += "\nSaldo: " + conta.getSaldo();
+                descricao += "\nTaxa: " + conta.getTaxaConta();
+                descricao += "\n";
+            }
+            
         }
-        //dados.setText(descricao);
         
     }
-    
     
 }

@@ -55,9 +55,8 @@ public class RelatorioClienteController {
         MenuInicialController.fecharUmaTela(event);
     }
     
-    public void buscarTodosClientes(ActionEvent event) {
+    public void buscarCliente(ActionEvent event) {
         
-        List<Clientes> listaClientes = clienteDao.lista();
         this.cliente = clienteDao.buscaCliente(cpf.getText());
         this.contasCliente = contaDao.buscaPorCliente(this.cliente);
         
