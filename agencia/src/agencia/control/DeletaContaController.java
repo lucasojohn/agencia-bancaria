@@ -2,7 +2,6 @@ package agencia.control;
 
 import agencia.Clientes;
 import agencia.Conta;
-import agencia.ContaCliente;
 import agencia.dao.ClienteDAO;
 import agencia.dao.ContaClienteDAO;
 import agencia.dao.ContaDAO;
@@ -53,6 +52,7 @@ public class DeletaContaController implements Initializable {
        
         contaClienteDao.deletaPorConta(contaDao.buscaId((Long) comboConta.getValue()));
         contaDao.deleta((Long) comboConta.getValue());
+        comboConta.getItems().remove(comboConta.getValue());
         
         limpaCampos();
         

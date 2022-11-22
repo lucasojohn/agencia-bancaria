@@ -4,6 +4,7 @@
  */
 package agencia.dao;
 
+import agencia.Clientes;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -51,16 +52,16 @@ public class ContaClienteDAO {
 	}
 
                     
-	public void deletaPorCliente(String cpfCliente){
+	public void deletaPorCliente(Clientes cliente){
             List<ContaCliente> lista = null;
             this.em = EntityManagerUtil.getEM();
             this.em.getTransaction().begin();
 
             TypedQuery<ContaCliente> query = this.em.createQuery(
-                            "SELECT cc FROM ContaCliente cc WHERE cc.cpfCliente = :cpfCliente", 
+                            "SELECT cc FROM ContaCliente cc WHERE cc.cpfCliente = :cliente", 
                             ContaCliente.class);
 
-            query.setParameter("cpfCliente", cpfCliente);
+            query.setParameter("cliente", cliente);
             lista = query.getResultList();
             
             for (ContaCliente contaCliente : lista) {

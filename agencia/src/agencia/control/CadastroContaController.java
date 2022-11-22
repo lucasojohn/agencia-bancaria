@@ -87,7 +87,7 @@ public class CadastroContaController implements Initializable {
         salvar.setDisable(false);
         cancelar.setDisable(false);
         
-        sucesso.setText("Cliente cadastrado com sucesso.");
+        sucesso.setText("Conta cadastrada com sucesso.");
         sucesso.setVisible(true);
     }
     
@@ -108,9 +108,9 @@ public class CadastroContaController implements Initializable {
     
     private boolean validaCampos() {
         if (
-                saldo.getText().isEmpty() || cliente.getValue() == null || 
-                (contaCorrente.isSelected() || contaPoupanca.isSelected()) == false
-            ) {
+            saldo.getText().isEmpty() || cliente.getValue() == null || 
+            (contaCorrente.isSelected() || contaPoupanca.isSelected()) == false
+        ) {
             validacao.setText("Campo obrigatório não preenchido.");
             validacao.setVisible(true);
             return false;

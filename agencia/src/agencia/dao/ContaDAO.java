@@ -1,5 +1,6 @@
 package agencia.dao;
 
+import agencia.Clientes;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -68,15 +69,15 @@ public class ContaDAO {
 		this.em.close();
 	}
 
-	public List<Conta> buscaPorCliente(String cpfCliente){
+	public List<Conta> buscaPorCliente(Clientes cliente){
             List<Conta> lista = null;
             this.em = EntityManagerUtil.getEM();
 
             TypedQuery<Conta> query = this.em.createQuery(
-                            "SELECT cnt FROM Conta cnt WHERE cnt.contaCliente.cpfCliente = :cpfCliente", 
+                            "SELECT cnt FROM Conta cnt WHERE cnt.contaCliente.cpfCliente = :cliente", 
                             Conta.class);
 
-            query.setParameter("cpfCliente", cpfCliente);
+            query.setParameter("cliente", cliente);
 
             lista = query.getResultList();
 
@@ -88,7 +89,8 @@ public class ContaDAO {
             this.em.getTransaction().begin();
             
             for (Conta conta : contas) {
-                this.em.remove(conta);
+                Conta managedConta = this.em.merge(conta);
+                this.em.remove(managedConta);
             }
             this.em.getTransaction().commit();
             this.em.close();

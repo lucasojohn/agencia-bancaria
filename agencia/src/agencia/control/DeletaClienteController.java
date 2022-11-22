@@ -5,6 +5,7 @@ import agencia.Conta;
 import agencia.dao.ClienteDAO;
 import agencia.dao.ContaClienteDAO;
 import agencia.dao.ContaDAO;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -17,9 +18,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceException;
-import util.EntityManagerUtil;
 
 /**
  *
@@ -28,24 +26,19 @@ import util.EntityManagerUtil;
 public class DeletaClienteController implements Initializable {
     ClienteDAO clienteDao = new ClienteDAO();
     ContaDAO contaDao = new ContaDAO();
-    private EntityManager em;
+    ContaClienteDAO contaClienteDao = new ContaClienteDAO();
+    
+    private List<Conta> contasCliente = null;
+    private Clientes cliente = null;
     
     @FXML
     private Button deletar;
     @FXML
     private TextField dataNasc;
     @FXML
-    private Button cancelar;
-    @FXML
     private TextField endereco;
     @FXML
-    private Button buscar;
-    @FXML
-    private RadioButton contaCorrente;
-    @FXML
     private TextField cpf;
-    @FXML
-    private RadioButton contaPoupanca;
     @FXML
     private RadioButton masculino;
     @FXML
@@ -58,7 +51,8 @@ public class DeletaClienteController implements Initializable {
     private TextField nrContas;
     @FXML
     private Label msgErro;
-    
+    @FXML
+    private Text sucesso;
     
     @FXML
     public void fechar(ActionEvent event){       
@@ -72,71 +66,80 @@ public class DeletaClienteController implements Initializable {
     
     @FXML
     public void buscarCliente(ActionEvent event) {
+        sucesso.setVisible(false);
+        msgErro.setVisible(false);
+        msgErro.setText("");
         
-        Clientes c = clienteDao.buscaCliente(cpf.getText());
+        this.cliente = clienteDao.buscaCliente(cpf.getText());
+        this.contasCliente = contaDao.buscaPorCliente(this.cliente);
 
-        if(c != null){
-
-            // limpa campos da pesquisa anterior
-            nome.setText("");
-            dataNasc.setText(""); 
-            endereco.setText("");
-            feminino.setSelected(false);
-            masculino.setSelected(false);
-            nrContas.setText("");
-            saldo.setText("");
-
-            // preenche campos com valores da nova pesquisa
-            nome.setText(c.getNome().toString());
-
-            SimpleDateFormat fd = new SimpleDateFormat("dd-MM-yyyy");
-            dataNasc.setText(fd.format(c.getNascimento()).toString());    
-
-            String teste = c.getSexo();
-            if(c.getSexo() == "m"){
-              masculino.setSelected(true);
-            } else {
-                feminino.setSelected(true);
-            }
-
-            endereco.setText(c.getEndereco().toString());
-
-            // total de contas
-            nrContas.setText("3");
-            // total de saldo em todas contas
-            saldo.setText("25.600");
-
-        } else {
-            nome.setText("");
-            dataNasc.setText(""); 
-            endereco.setText("");
-            feminino.setSelected(false);
-            masculino.setSelected(false);
-            nrContas.setText("");
-            saldo.setText("");
+        if(this.cliente == null){
+            deletar.setDisable(true);
             msgErro.setVisible(true);
+            msgErro.setText("CPF informado não cadastrado.");
+            return;
         }
+        
+        // limpa campos da pesquisa anterior
+        limpaCampos();
+
+        // preenche campos com valores da nova pesquisa
+        nome.setText(this.cliente.getNome());
+        SimpleDateFormat fd = new SimpleDateFormat("dd-MM-yyyy");
+        dataNasc.setText(fd.format(this.cliente.getNascimento()));    
+        endereco.setText(this.cliente.getEndereco());
+        
+        if("m".equals(this.cliente.getSexo())){
+          masculino.setSelected(true);
+        } else {
+            feminino.setSelected(true);
+        }
+
+        // total de contas
+        nrContas.setText(Integer.toString(contasCliente.size()));
+        // total de saldo em todas contas
+        BigDecimal saldoTotal = BigDecimal.ZERO;
+        
+        for (Conta conta : this.contasCliente) {
+            saldoTotal = saldoTotal.add(conta.getSaldo());
+        }
+        saldo.setText(saldoTotal.toString());
+        
+        deletar.setDisable(false);
+    }
+    
+    private void limpaCampos() {
+        nome.setText("");
+        dataNasc.setText(""); 
+        endereco.setText("");
+        feminino.setSelected(false);
+        masculino.setSelected(false);
+        nrContas.setText("");
+        saldo.setText("");
+    }
+    
+    @FXML
+    public void setFeminino(ActionEvent event) {
+        masculino.setSelected(false);
+    }
+
+    @FXML
+    public void setMasculino(ActionEvent event) {
+        feminino.setSelected(false);
     }
     
     @FXML
     public void deletarCliente(ActionEvent event) {
         
-        try {
-            Clientes c = clienteDao.buscaCliente(cpf.getText());
-            //Contas teste = contaDao.buscaPorCliente(cpf.getText());
-            if(c != null){
-                ContaDAO contaDao = new ContaDAO();
-                ContaClienteDAO contaClienteDao = new ContaClienteDAO();
-                
-                List<Conta> contasDoCliente = contaDao.buscaPorCliente(c.getCpf());
-                contaClienteDao.deletaPorCliente(c.getCpf());
-                contaDao.deletaBulk(contasDoCliente);
-
-            }
-
-        } catch (PersistenceException e) {
-
-        }
+        contaClienteDao.deletaPorCliente(this.cliente);
+        contaDao.deletaBulk(contasCliente);
+        clienteDao.deleta(this.cliente.getCpf());
+        
+        limpaCampos();
+        
+        deletar.setDisable(true);
+        sucesso.setVisible(true);
+        sucesso.setText("Cliente excluído com sucesso.");
     }
     
     
