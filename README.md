@@ -1,2 +1,3 @@
 # agencia-bancaria
-Sistema para gerenciar agência bancária
+Trabalho de conclusão da cadeira de POO utilizando Java
+-- Sistema para gerenciar agência bancária --
